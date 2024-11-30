@@ -12,15 +12,13 @@ const menu = [
         children: [
             {
                 key: "점검관리",
-                label: (<Link href={"/notice"}>점검관리</Link>),
+                label: (<Link href={"/notice/inspection"}>점검관리</Link>),
             }
         ]
     }
 ]
 
 function SideMenu() {
-
-
 
     const [current, setCurrent] = useState('home');
 

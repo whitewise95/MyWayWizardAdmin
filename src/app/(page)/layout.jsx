@@ -6,7 +6,7 @@ function Layout({children}) {
 
 
     return (
-        <div className={"flex h-full w-full"}>
+        <div className={"flex"}>
             <div className={"w-[250px] flex flex-col border-solid border-r-gray-300 border-r-[1px]"}>
                 <SideMenu>
 
@@ -14,11 +14,11 @@ function Layout({children}) {
             </div>
             <div className={"w-full h-full flex flex-col"}>
                 <div className={"border-solid border-b-gray-300 border-b-[1px] p-5 font-light bg-gray-100 w-full flex flex-col items-end"}>
-                    <Link className={""} href={""}>
+                    <Link  href={""}>
                         home
                     </Link>
                 </div>
-                <div className={"h-full"}>
+                <div >
                     {children}
                 </div>
             </div>
