@@ -10,7 +10,7 @@ import { useResponsive } from 'antd-style';
  * 파란색 - primary
  * 빨간색 - danger
  * */
-function DefaultButton({color = "primary", variant = "solid"}) {
+function DefaultButton({color = "primary", variant = "solid", children}) {
     const { xxl } = useResponsive();
 
     return (
@@ -18,7 +18,7 @@ function DefaultButton({color = "primary", variant = "solid"}) {
             <Flex vertical gap="middle">
                 <Flex gap="middle" wrap>
                     <Button color={color} variant={variant}>
-                        Solid
+                        {children}
                     </Button>
                 </Flex>
             </Flex>

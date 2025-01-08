@@ -4,9 +4,9 @@ import React from 'react';
 import { Flex, Radio } from 'antd';
 
 const defaultOptions = [
-    { label: '1', value: '1' },
-    { label: '2', value: '2' },
-    { label: '3', value: '3' },
+    { label: '점검중 공지', value: '1' },
+    { label: '로비 공지', value: '2' },
+    { label: '긴급메세지', value: '3' },
 ];
 
 function DefaultRadio({options = defaultOptions}) {
