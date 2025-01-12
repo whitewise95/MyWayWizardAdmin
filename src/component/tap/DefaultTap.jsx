@@ -25,9 +25,9 @@ const defaultItems = [
     },
 ];
 
-function DefaultTap({tabMenus = defaultItems}) {
+function DefaultTap({tabMenus = defaultItems, defaultActiveKey = tabMenus[0].key}) {
     return (
-        <Tabs defaultActiveKey="1" items={tabMenus} onChange={onChange} />
+        <Tabs defaultActiveKey={defaultActiveKey} items={tabMenus} onChange={onChange} />
     );
 }
 

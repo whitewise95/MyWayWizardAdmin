@@ -10,14 +10,14 @@ import { useResponsive } from 'antd-style';
  * 파란색 - primary
  * 빨간색 - danger
  * */
-function DefaultButton({color = "primary", variant = "solid", children}) {
+function DefaultButton({color = "primary", variant = "solid", onclickFn, className = "", children}) {
     const { xxl } = useResponsive();
 
     return (
         <ConfigProvider componentSize={xxl ? 'middle' : 'small'}>
             <Flex vertical gap="middle">
                 <Flex gap="middle" wrap>
-                    <Button color={color} variant={variant}>
+                    <Button color={color} variant={variant} onClick={onclickFn} className={className}>
                         {children}
                     </Button>
                 </Flex>
