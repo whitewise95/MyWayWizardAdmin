@@ -22,6 +22,7 @@ function DefaultInput({onclickFn}) {
             <input
                 type="text"
                 name="search"
+                onChange={handleInputChange}
                 className="flex-1 border-none outline-none px-2"
             />
             <button

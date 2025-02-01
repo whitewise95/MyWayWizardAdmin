@@ -9,8 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.66.0",
+    "@tanstack/react-query-devtools": "^5.66.0",
     "antd": "^5.22.2",
     "antd-style": "^3.7.1",
+    "axios": "^1.7.9",
     "immer": "^10.1.1",
     "next": "14.2.15",
     "react": "^18",
