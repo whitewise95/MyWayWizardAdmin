@@ -1,17 +1,23 @@
 'use client'
 
-import React from 'react';
+import React, {useState} from 'react';
 import DefaultInput from "@/component/input/DefaultInput";
 import DefaultTable from "@/component/table/DefaultTable";
 import DefaultButton from "@/component/button/DefaultButton";
 import {useRouter} from "next/navigation";
 import {useQuery} from "@tanstack/react-query";
-import axios from "axios";
+import api from "@/axiox/api";
 
 function Notice({tapInfo}) {
+    const [keyword, setKeyword] = useState("");
+    const [page, setPage] = useState(1);
+    const limit = 20; // 고정 값 (필요하면 상태로 변경 가능)
+    const sortField = "createdAt";
+    const orderType = "DESC";
+
     const nav = useRouter();
     const onSearch = (keyword) => {
-        console.log(keyword)
+        setKeyword(keyword)
     }
 
     const writeNotice = () => {
@@ -19,9 +25,22 @@ function Notice({tapInfo}) {
     }
 
     const fetchData = async () => {
-        const {data} = await axios.get('http://localhost:8090/admin/api/notice');
+        const uri = api.getUri();
         debugger
-        return data;
+        const response = await api.get(`/admin/api/notice/NOTICE`, {
+            params: {
+                page,
+                limit,
+                sortField,
+                orderType,
+                keyword, // 검색어 추가
+            },
+            // headers: {
+            //     Authorization: `Bearer ${localStorage.getItem('token')}`, // 동적으로 설정
+            // },
+        });
+
+        return response.data; // axios의 응답 데이터 반환
     };
 
 
@@ -42,7 +61,7 @@ function Notice({tapInfo}) {
                 <DefaultButton onclickFn={writeNotice}>공지 등록</DefaultButton>
             </div>
             <div className={""}>
-                <DefaultTable></DefaultTable>
+                <DefaultTable dataList={data.result}></DefaultTable>
             </div>
         </div>
     );
