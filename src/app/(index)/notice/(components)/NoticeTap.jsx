@@ -26,17 +26,17 @@ function NoticeTap() {
 
 const NOTICE = {
     api_url: "",
-    key: "notice",
+    key: "NOTICE",
 }
 
 const IN_NOTICE = {
     api_url: "",
-    key: "in_notice",
+    key: "IN_NOTICE",
 }
 
 const INSPECTION = {
     api_url: "",
-    key: "inspection",
+    key: "INSPECTION",
 }
 
 export default NoticeTap;

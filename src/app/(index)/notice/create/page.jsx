@@ -1,24 +1,27 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import DefaultButton from "@/component/button/DefaultButton";
 import {useRouter} from "next/navigation";
+import api from "@/axiox/api";
 
 function Page() {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
-    const [type, setType] = useState('general'); // 기본값 설정
+    const [type, setType] = useState('IN_NOTICE'); // 기본값 설정
 
     const router = useRouter();
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // 등록 로직 (API 호출 등)
-        console.log('공지 등록:', { title, content, type });
-        alert('공지사항이 등록되었습니다.');
-        setTitle('');
-        setContent('');
-        setType('general'); // 콤보박스 기본값으로 초기화
+
+        const response = await api.post('/admin/api/notice', {
+            title,
+            content,
+            noticeType: type
+        });
+
+        router.push('/notice');
     };
 
     return (
@@ -65,14 +68,15 @@ function Page() {
                             className="w-full px-4 py-2 mt-1 text-gray-700 bg-gray-100 border rounded focus:outline-none focus:ring focus:ring-blue-300"
                             required
                         >
-                            <option value="in_notice">로비 공지</option>
-                            <option value="inspection">긴급 공지</option>
-                            <option value="notice">점검중 공지</option>
+                            <option value="IN_NOTICE">로비 공지</option>
+                            <option value="INSPECTION">긴급 공지</option>
+                            <option value="NOTICE">점검중 공지</option>
                         </select>
                     </div>
                     <div className={"flex justify-center gap-2 w-full"}>
-                        <DefaultButton>등록</DefaultButton>
-                        <DefaultButton color={"danger"} onclickFn={() => router.push("/notice?defaultActiveKey=")}>취소</DefaultButton>
+                        <DefaultButton onclickFn={handleSubmit}>등록</DefaultButton>
+                        <DefaultButton color={"danger"}
+                                       onclickFn={() => router.push("/notice?defaultActiveKey=")}>취소</DefaultButton>
                     </div>
 
                 </form>

@@ -1,6 +1,10 @@
 import React from 'react';
 
-function DefaultTable({dataList}) {
+function DefaultTable({ dataList }) {
+
+
+
+
     return (
         <div className="">
             <table className="min-w-full border-collapse border border-gray-300">
